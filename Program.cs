@@ -2,9 +2,14 @@
 int arraySize = Convert.ToInt32(Console.ReadLine());
 string[] firstArray = FirstArray(arraySize);
 PrintArr(firstArray);
+string[] secondArray = SecondArray(firstArray);
+Console.WriteLine();
+Console.WriteLine("Второй массив");
+PrintArr(secondArray);
 
 string[] FirstArray(int arrSize)
 {
+Console.WriteLine("Введите данные");
 string[] firstArr = new string[arraySize];
 for(int i = 0; i < arraySize; i++)
 {
@@ -17,8 +22,10 @@ for(int i = 0; i < arraySize; i++)
          i--;
     }
 }
+Console.WriteLine("Первоначальный массив");
 return firstArr;
 }
+
 void PrintArr(string[] Arr)
 {
     Console.Write("[");
@@ -27,4 +34,27 @@ void PrintArr(string[] Arr)
         if(i < Arr.GetLength(0) - 1) Console.Write($"{Arr[i]}, ");
         else Console.Write($"{Arr[i]}]");
     }
+}
+
+string[] SecondArray(string[] Arr)
+{
+    int sum = 0;
+    for(int i = 0; i < Arr.GetLength(0); i++)
+    {
+        if(Arr[i].Length <= 3)
+        {
+            sum = sum + 1;
+        }
+    }
+    string[] secondArr = new string[sum];
+    int j = 0;
+    for(int i = 0; i < Arr.GetLength(0); i++)
+    {
+        if(Arr[i].Length <= 3)
+        {
+            secondArr[j] = Arr[i];
+            j++;
+        }
+    }
+    return secondArr;
 }
